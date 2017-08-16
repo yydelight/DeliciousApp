@@ -12,7 +12,7 @@
     </mt-header>
 
     <!-- 固定在底部的选项卡 -->
-    <mt-tabbar v-model="selected">
+    <mt-tabbar v-model="selected" fixed>
       <mt-tab-item id="菜谱">
         <img slot="icon" src="../assets/menu-icon/tab_recipe_red.png">
         菜谱
@@ -30,6 +30,22 @@
         我的
       </mt-tab-item>
     </mt-tabbar>
+
+    <!-- 底部选项卡的tabcontainer -->
+    <mt-tab-container class="page-tabbar-container" v-model="selected">  
+      <mt-tab-container-item id="菜谱">  
+        
+      </mt-tab-container-item>  
+      <mt-tab-container-item id="话题">  
+        
+      </mt-tab-container-item>  
+      <mt-tab-container-item id="珍选">  
+          
+      </mt-tab-container-item>  
+      <mt-tab-container-item id="我的">  
+         
+      </mt-tab-container-item>  
+    </mt-tab-container>   
 
     <!-- 搜索栏 -->
 
@@ -80,7 +96,7 @@
     </div>
 
     <!-- 菜谱分类精选 -->
-    <div class="recipeSort small-font">
+    <div class="recipeSort">
       <!-- 标题 -->
       <div class="recipe_title">
         <img src="../assets/menu-icon/title_icon.png">
@@ -107,7 +123,45 @@
       <mt-badge size="small" color="#fff">快手菜</mt-badge>
     </div>
 
-    
+    <!-- 查看全部菜谱分类 -->
+    <div class="allSorts">
+      <mt-badge size="small" color="#fff">查看全部菜谱分类</mt-badge>      
+    </div>
+
+    <!-- 时令与热门食材 -->
+    <div class="recipeSort hotMaterial">
+      <!-- 标题 -->
+      <div class="recipe_title">
+        <img src="../assets/menu-icon/title_icon.png">
+        <span>时令与热门食材</span>
+      </div>
+      <!-- 主要内容 -->
+      <div class="recipeSort_content">
+        <mt-cell v-for="meterial in materialSorts" :title=meterial.title>
+          <img slot="icon" :src=meterial.src width="50" height="50">
+        </mt-cell>
+      </div>      
+    </div>
+
+    <!-- 查看全部食材 -->
+    <div class="allSorts">
+      <mt-badge size="small" color="#fff">查看全部食材</mt-badge>      
+    </div>  
+
+    <!-- 最新推荐的菜谱 -->
+    <div class="recipeSort recoRecipe">
+      <!-- 标题 -->
+      <div class="recipe_title">
+        <img src="../assets/menu-icon/title_icon.png">
+        <span>最新推荐的菜谱</span>
+      </div>
+      <!-- 主要内容 -->
+      <div class="recipeSort_content recoRecipe_content">
+        <mt-cell v-for="recommend in newRecipeReco" :title=recommend.title :label=recommend.label>
+          <img slot="icon" :src=recommend.src width="166" height="146">
+        </mt-cell>
+      </div>      
+    </div>  
        
   </div>
 </template>
@@ -168,6 +222,76 @@ export default {
         title:"妈妈派",
         label:"孕妇 辅食 亲子菜",
         src:"../static/image/recipeImg/rs4.jpg"
+      }],
+      materialSorts:[{
+        title:"薏米",
+        src:"../static/image/materialImg/hm1.jpg"
+      },{
+        title:"木耳",
+        src:"../static/image/materialImg/hm2.jpg"
+      },{
+        title:"冬瓜",
+        src:"../static/image/materialImg/hm3.jpg"
+      },{
+        title:"玉米",
+        src:"../static/image/materialImg/hm4.jpg"
+      },{
+        title:"小龙虾",
+        src:"../static/image/materialImg/hm5.jpg"
+      },{
+        title:"鸡肉",
+        src:"../static/image/materialImg/hm6.jpg"
+      },{
+        title:"青口贝",
+        src:"../static/image/materialImg/hm7.jpg"
+      },{
+        title:"芋头",
+        src:"../static/image/materialImg/hm8.jpg"
+      },{
+        title:"红薯",
+        src:"../static/image/materialImg/hm9.jpg"
+      },{
+        title:"乌鸡",
+        src:"../static/image/materialImg/hm10.jpg"
+      },{
+        title:"培根",
+        src:"../static/image/materialImg/hm11.jpg"
+      },{
+        title:"全部食材",
+        src:"../static/image/materialImg/more.jpg"
+      }],
+      newRecipeReco:[{
+        title:"虎皮辣椒炒肥牛",
+        label:"天国的女儿",
+        src:"../static/image/recipeImg/nrr1.jpg"
+      },{
+        title:"挂糊花生米",
+        label:"小玉厨房",
+        src:"../static/image/recipeImg/nrr2.jpg"
+      },{
+        title:"茄汁肉酱披萨盒",
+        label:"小妞_hebycE",
+        src:"../static/image/recipeImg/nrr3.jpg"
+      },{
+        title:"茄汁牛肉酱拌面",
+        label:"小妞_hebycE",
+        src:"../static/image/recipeImg/nrr4.jpg"
+      },{
+        title:"红烧猪骨",
+        label:"碗里姜膳",
+        src:"../static/image/recipeImg/nrr5.jpg"
+      },{
+        title:"香煎杏鲍菇",
+        label:"一米阳光612",
+        src:"../static/image/recipeImg/nrr6.jpg"
+      },{
+        title:"干锅茶树菇",
+        label:"食趣菜菜屋的屋",
+        src:"../static/image/recipeImg/nrr7.jpg"
+      },{
+        title:"美味鲜虾肠粉",
+        label:"雪峰儿",
+        src:"../static/image/recipeImg/nrr8.jpg"
       }]
     }
   }
@@ -312,10 +436,12 @@ li {
 .recipeSort .mint-cell-label{
   font-size: 12px;
 }
-
+.recipeSort .mint-cell:last-child{
+  background-image: none;
+}
 /*多种分类*/
 .sort{
-  margin: 3% 0px;
+  margin: 15px 0px;
 }
 .sorts .mint-badge {
   color: #333;
@@ -326,5 +452,28 @@ li {
   border: 1px solid #bbb;
   border-radius: 12px;
   padding: 6px 7px;
+  letter-spacing: 1px;
+}
+/*全部分类*/
+.allSorts .mint-badge{
+  color: #FE5761;
+}
+.allSorts .mint-badge.is-size-small {
+  border: 1px solid #FE5761;
+  padding: 5px 43px;
+  margin: 3% 0;
+  letter-spacing: 1px;
+  border-radius: 24px;
+}
+.hotMaterial .mint-cell-wrapper{
+  margin-bottom: 15px;
+}
+/*最新推荐的菜谱*/
+.recoRecipe{
+
+}
+.recoRecipe_content a{
+  width: 50%;
+  margin-top: 10px;
 }
 </style>
