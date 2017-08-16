@@ -75,9 +75,39 @@
       </div>
       <!-- 主要内容 -->
       <mt-cell v-for="menu in popularMenu" :title=menu.title :label=menu.label class="popular_content" >
-        <img slot="icon" src="../assets/banner-img/pf1.jpg" width="64" height="64">
+        <img slot="icon" :src=menu.src width="64" height="64">
       </mt-cell>
     </div>
+
+    <!-- 菜谱分类精选 -->
+    <div class="recipeSort small-font">
+      <!-- 标题 -->
+      <div class="recipe_title">
+        <img src="../assets/menu-icon/title_icon.png">
+        <span>菜谱分类精选</span>
+      </div>
+      <!-- 主要内容 -->
+      <div class="recipeSort_content">
+        <mt-cell v-for="sort in recipeSorts" :title=sort.title :label=sort.label>
+          <img slot="icon" :src=sort.src width="65" height="65">
+        </mt-cell>
+      </div>      
+    </div>
+
+    <!-- 多种分类 -->
+    <div class="sorts">
+      <mt-badge size="small" color="#fff">热菜</mt-badge>
+      <mt-badge size="small" color="#fff">凉菜</mt-badge>
+      <mt-badge size="small" color="#fff">汤羹</mt-badge>
+      <mt-badge size="small" color="#fff">主食</mt-badge>
+      <mt-badge size="small" color="#fff">小吃</mt-badge>
+      <mt-badge size="small" color="#fff">川菜</mt-badge>
+      <mt-badge size="small" color="#fff">夏季食谱</mt-badge>
+      <mt-badge size="small" color="#fff">瘦身</mt-badge>
+      <mt-badge size="small" color="#fff">快手菜</mt-badge>
+    </div>
+
+    
        
   </div>
 </template>
@@ -99,17 +129,46 @@ export default {
       popularMenu:[{
         title:"爱吃[土豆]的都是胖天使？",
         label:"菜单|快来看看土豆还有哪些吃法",
-        src:"../assets/banner-img/pf1.jpg"
+        src:"../static/image/popularImg/pf1.jpg"
       },{
         title:"[鸭血]的美味做法大全~",
         label:"菜单|保证好吃到停不下来！",
-        src:"../assets/banner-img/pf2.jpg"
+        src:"../static/image/popularImg/pf2.jpg"
       },{
         title:"深夜食堂的主角-小龙虾",
         label:"专题|除了吃，你还了解多少？",
-        src:"../assets/banner-img/pf2.jpg"
+        src:"../static/image/popularImg/pf3.jpg"
+      },{
+        title:"盘点孕妇必吃的12种孕期事物",
+        label:"知识|饮食与健康",
+        src:"../static/image/popularImg/pf4.jpg"
+      },{
+        title:"人气菜肴",
+        label:"超过50人收藏的菜谱都超赞( • ̀ω•́ )✧",
+        src:"../static/image/popularImg/pf5.jpg"
+      },{
+        title:"一周热门",
+        label:"近7天来最受欢迎的新菜谱，不容放过",
+        src:"../static/image/popularImg/pf6.jpg"
       }
-      ]
+      ],
+      recipeSorts:[{
+        title:"家常菜",
+        label:"人人都是美食家",
+        src:"../static/image/recipeImg/rs1.jpg"
+      },{
+        title:"早餐",
+        label:"一日之计在于晨",
+        src:"../static/image/recipeImg/rs2.jpg"
+      },{
+        title:"烘焙",
+        label:"分类很全 方子超多",
+        src:"../static/image/recipeImg/rs3.jpg"
+      },{
+        title:"妈妈派",
+        label:"孕妇 辅食 亲子菜",
+        src:"../static/image/recipeImg/rs4.jpg"
+      }]
     }
   }
 }
@@ -137,6 +196,13 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
+
+/*解决谷歌字体小于12px没效果*/
+/*.small-font{    
+  font-size:12px; 
+  -webkit-transform-origin-x: 0;
+  -webkit-transform: scale(0.90);
+}*/
 
 
 /*固定导航更换颜色*/
@@ -173,24 +239,26 @@ li {
 }
 
 /*流行与排行*/
-.popular{
+.popular,.recipeSort{
   margin: 1%;
 }
-.popular_title{
+.popular_title,.recipe_title{
   text-align: left;
   font-size: 14px;
   line-height: 14px;
-  vertical-align: top;
   margin-left: 5px;
 }
-.popular_title img{
+.popular_title img,.recipe_title img{
   width: 14px;
   height: 14px;
 }
+.popular_title span,.recipe_title span{
+  vertical-align: top;
+}
 /*流行与排行的主要内容*/
 .popular_content .mint-cell-title {
-    padding-top: 10px;
-    overflow: hidden;
+  padding-top: 10px;
+  overflow: hidden;
 }
 .popular_content .mint-cell-wrapper{
   padding: 0 0;
@@ -198,23 +266,65 @@ li {
   margin-bottom: 1%;
 }
 .popular_content .mint-cell-title img {
-    vertical-align: middle;
-    float: left;
-    margin-left: 5px;
+  vertical-align: middle;
+  float: left;
+  margin-left: 5px;
 }
 .popular_content .mint-cell-text {
-    vertical-align: top;
-    float: left;
-    margin-left: 10px;
-    margin-top: 10px;
-    color: #000;
-    width: 70%;
-    text-align: left;
+  vertical-align: top;
+  float: left;
+  margin-left: 10px;
+  margin-top: 10px;
+  color: #000;
+  width: 70%;
+  text-align: left;
 }
 .popular_content .mint-cell-label {
-    font-size: 12px;
-    margin-top: 17px;
-    margin-left: 10px;
-    float: left;
+  font-size: 12px;
+  margin-top: 17px;
+  margin-left: 10px;
+  float: left;
+}
+
+/*菜谱精选分类*/
+.recipeSort{
+  margin-top: 6%;
+}
+.recipeSort .mint-cell-wrapper{
+  background-image: none;
+  /*text-align: left;*/
+}
+.recipeSort_content{
+  margin-top: 2%;
+}
+.recipeSort_content a{
+  display: inline-block;
+  width: 25%;
+  vertical-align: top;
+}
+.recipeSort .mint-cell-text{
+  display: block;
+  text-align: center;  
+  font-size: 14px;
+  /*-webkit-transform: scale(0.90);*/
+  padding-top: 6%;
+}
+.recipeSort .mint-cell-label{
+  font-size: 12px;
+}
+
+/*多种分类*/
+.sort{
+  margin: 3% 0px;
+}
+.sorts .mint-badge {
+  color: #333;
+  width: 23%;
+  margin: 2%;
+}
+.sorts .mint-badge.is-size-small {
+  border: 1px solid #bbb;
+  border-radius: 12px;
+  padding: 6px 7px;
 }
 </style>
