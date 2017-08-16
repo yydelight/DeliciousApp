@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <!-- 顶部固定导航 -->
-    <mt-header fixed title="首页">
+<!--     <mt-header fixed title="首页">
       <router-link to="/" slot="left">
         <mt-button icon="search"></mt-button>        
       </router-link>
@@ -9,23 +9,23 @@
         <mt-button>菜单</mt-button>        
       </router-link>
       <mt-button icon="plus" slot="right">发菜谱</mt-button>
-    </mt-header>
+    </mt-header> -->
 
     <!-- 固定在底部的选项卡 -->
-    <mt-tabbar v-model="selected" fixed>
-      <mt-tab-item id="菜谱">
+    <mt-tabbar fixed>
+      <mt-tab-item id="菜谱" @click.native.prevent="selected='菜谱'">
         <img slot="icon" src="../assets/menu-icon/tab_recipe_red.png">
         菜谱
       </mt-tab-item>
-      <mt-tab-item id="话题">
+      <mt-tab-item id="话题" @click.native.prevent="selected='话题'">
         <img slot="icon" src="../assets/menu-icon/tab_topic_gray.png">
         话题
       </mt-tab-item>
-      <mt-tab-item id="珍选">
+      <mt-tab-item id="珍选" @click.native.prevent="selected='珍选'">
         <img slot="icon" src="../assets/menu-icon/tab_select_grey.png">
         珍选
       </mt-tab-item>
-      <mt-tab-item id="我的">
+      <mt-tab-item id="我的" @click.native.prevent="selected='我的'">
         <img slot="icon" src="../assets/menu-icon/tab_user_gray.png">
         我的
       </mt-tab-item>
@@ -34,10 +34,10 @@
     <!-- 底部选项卡的tabcontainer -->
     <mt-tab-container class="page-tabbar-container" v-model="selected">  
       <mt-tab-container-item id="菜谱">  
-        
+        <recipe></recipe>
       </mt-tab-container-item>  
       <mt-tab-container-item id="话题">  
-        
+        <topic></topic>
       </mt-tab-container-item>  
       <mt-tab-container-item id="珍选">  
           
@@ -47,121 +47,10 @@
       </mt-tab-container-item>  
     </mt-tab-container>   
 
-    <!-- 搜索栏 -->
 
-    <!-- banner广告栏 -->
-    <mt-swipe :auto="4000">
-      <mt-swipe-item> <img src="../assets/banner-img/1.jpg"> </mt-swipe-item>
-      <mt-swipe-item> <img src="../assets/banner-img/2.jpg"> </mt-swipe-item>
-      <mt-swipe-item> <img src="../assets/banner-img/3.jpg"> </mt-swipe-item>
-      <mt-swipe-item> <img src="../assets/banner-img/4.jpg"> </mt-swipe-item>
-      <mt-swipe-item> <img src="../assets/banner-img/5.jpg"> </mt-swipe-item>
-    </mt-swipe>
 
-    <!-- 菜单栏 -->
-    <mt-tabbar v-model="menuSelected" class="yyMenu">
-      <mt-tab-item id="专题">
-        <img slot="icon" src="../assets/menu-icon/home_topic.png">
-        专题
-      </mt-tab-item>
-      <mt-tab-item id="菜单">
-        <img slot="icon" src="../assets/menu-icon/home_menu.png">
-        菜单
-      </mt-tab-item>
-      <mt-tab-item id="视频">
-        <img slot="icon" src="../assets/menu-icon/home_video.png">
-        视频
-      </mt-tab-item>
-      <mt-tab-item id="活动">
-        <img slot="icon" src="../assets/menu-icon/home_event.png">
-        活动
-      </mt-tab-item>
-      <mt-tab-item id="福利社">
-        <img slot="icon" src="../assets/menu-icon/home_welfare.png">
-        福利社
-      </mt-tab-item>
-    </mt-tabbar>
 
-    <!-- 流行与排行 -->
-    <div class="popular">
-      <!-- 标题 -->
-      <div class="popular_title">
-        <img src="../assets/menu-icon/title_icon.png">
-        <span>流行与排行</span>
-      </div>
-      <!-- 主要内容 -->
-      <mt-cell v-for="menu in popularMenu" :title=menu.title :label=menu.label class="popular_content" >
-        <img slot="icon" :src=menu.src width="64" height="64">
-      </mt-cell>
-    </div>
 
-    <!-- 菜谱分类精选 -->
-    <div class="recipeSort">
-      <!-- 标题 -->
-      <div class="recipe_title">
-        <img src="../assets/menu-icon/title_icon.png">
-        <span>菜谱分类精选</span>
-      </div>
-      <!-- 主要内容 -->
-      <div class="recipeSort_content">
-        <mt-cell v-for="sort in recipeSorts" :title=sort.title :label=sort.label>
-          <img slot="icon" :src=sort.src width="65" height="65">
-        </mt-cell>
-      </div>      
-    </div>
-
-    <!-- 多种分类 -->
-    <div class="sorts">
-      <mt-badge size="small" color="#fff">热菜</mt-badge>
-      <mt-badge size="small" color="#fff">凉菜</mt-badge>
-      <mt-badge size="small" color="#fff">汤羹</mt-badge>
-      <mt-badge size="small" color="#fff">主食</mt-badge>
-      <mt-badge size="small" color="#fff">小吃</mt-badge>
-      <mt-badge size="small" color="#fff">川菜</mt-badge>
-      <mt-badge size="small" color="#fff">夏季食谱</mt-badge>
-      <mt-badge size="small" color="#fff">瘦身</mt-badge>
-      <mt-badge size="small" color="#fff">快手菜</mt-badge>
-    </div>
-
-    <!-- 查看全部菜谱分类 -->
-    <div class="allSorts">
-      <mt-badge size="small" color="#fff">查看全部菜谱分类</mt-badge>      
-    </div>
-
-    <!-- 时令与热门食材 -->
-    <div class="recipeSort hotMaterial">
-      <!-- 标题 -->
-      <div class="recipe_title">
-        <img src="../assets/menu-icon/title_icon.png">
-        <span>时令与热门食材</span>
-      </div>
-      <!-- 主要内容 -->
-      <div class="recipeSort_content">
-        <mt-cell v-for="meterial in materialSorts" :title=meterial.title>
-          <img slot="icon" :src=meterial.src width="50" height="50">
-        </mt-cell>
-      </div>      
-    </div>
-
-    <!-- 查看全部食材 -->
-    <div class="allSorts">
-      <mt-badge size="small" color="#fff">查看全部食材</mt-badge>      
-    </div>  
-
-    <!-- 最新推荐的菜谱 -->
-    <div class="recipeSort recoRecipe">
-      <!-- 标题 -->
-      <div class="recipe_title">
-        <img src="../assets/menu-icon/title_icon.png">
-        <span>最新推荐的菜谱</span>
-      </div>
-      <!-- 主要内容 -->
-      <div class="recipeSort_content recoRecipe_content">
-        <mt-cell v-for="recommend in newRecipeReco" :title=recommend.title :label=recommend.label>
-          <img slot="icon" :src=recommend.src width="166" height="146">
-        </mt-cell>
-      </div>      
-    </div>  
        
   </div>
 </template>
@@ -169,16 +58,23 @@
 <script>
 import Vue from 'vue'
 import { Tabbar, TabItem } from 'mint-ui'
+import topic from '../components/topic.vue'
+import recipe from '../components/recipe.vue'
 
 Vue.component(Tabbar.name, Tabbar)
 Vue.component(TabItem.name, TabItem)
 
 export default {
   name: 'hello',
+  components: {
+    topic,
+    recipe
+  },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
       selected: '菜谱',
+      id:'',
       menuSelected:'',
       popularMenu:[{
         title:"爱吃[土豆]的都是胖天使？",
@@ -294,6 +190,12 @@ export default {
         src:"../static/image/recipeImg/nrr8.jpg"
       }]
     }
+  },
+  watch: {
+      selected: function (val, oldVal) {
+          // 这里就可以通过 val 的值变更来确定
+          console.log(val)
+      }
   }
 }
 </script>
@@ -343,137 +245,4 @@ li {
     color: #FE5761;
 }
 
-/*修改轮播的高度*/
-.mint-swipe{
-  height:164px;
-}
-.mint-swipe img{
-  width: 100%;
-  height: 100%;
-}
-
-/*菜单栏*/
-.yyMenu{
-  display: block;
-  position: relative;
-}
-.yyMenu a{
-  display: inline-block;
-  margin: 1% 5%;
-}
-
-/*流行与排行*/
-.popular,.recipeSort{
-  margin: 1%;
-}
-.popular_title,.recipe_title{
-  text-align: left;
-  font-size: 14px;
-  line-height: 14px;
-  margin-left: 5px;
-}
-.popular_title img,.recipe_title img{
-  width: 14px;
-  height: 14px;
-}
-.popular_title span,.recipe_title span{
-  vertical-align: top;
-}
-/*流行与排行的主要内容*/
-.popular_content .mint-cell-title {
-  padding-top: 10px;
-  overflow: hidden;
-}
-.popular_content .mint-cell-wrapper{
-  padding: 0 0;
-  margin-top: 1%;
-  margin-bottom: 1%;
-}
-.popular_content .mint-cell-title img {
-  vertical-align: middle;
-  float: left;
-  margin-left: 5px;
-}
-.popular_content .mint-cell-text {
-  vertical-align: top;
-  float: left;
-  margin-left: 10px;
-  margin-top: 10px;
-  color: #000;
-  width: 70%;
-  text-align: left;
-}
-.popular_content .mint-cell-label {
-  font-size: 12px;
-  margin-top: 17px;
-  margin-left: 10px;
-  float: left;
-}
-
-/*菜谱精选分类*/
-.recipeSort{
-  margin-top: 6%;
-}
-.recipeSort .mint-cell-wrapper{
-  background-image: none;
-  /*text-align: left;*/
-}
-.recipeSort_content{
-  margin-top: 2%;
-}
-.recipeSort_content a{
-  display: inline-block;
-  width: 25%;
-  vertical-align: top;
-}
-.recipeSort .mint-cell-text{
-  display: block;
-  text-align: center;  
-  font-size: 14px;
-  /*-webkit-transform: scale(0.90);*/
-  padding-top: 6%;
-}
-.recipeSort .mint-cell-label{
-  font-size: 12px;
-}
-.recipeSort .mint-cell:last-child{
-  background-image: none;
-}
-/*多种分类*/
-.sort{
-  margin: 15px 0px;
-}
-.sorts .mint-badge {
-  color: #333;
-  width: 23%;
-  margin: 2%;
-}
-.sorts .mint-badge.is-size-small {
-  border: 1px solid #bbb;
-  border-radius: 12px;
-  padding: 6px 7px;
-  letter-spacing: 1px;
-}
-/*全部分类*/
-.allSorts .mint-badge{
-  color: #FE5761;
-}
-.allSorts .mint-badge.is-size-small {
-  border: 1px solid #FE5761;
-  padding: 5px 43px;
-  margin: 3% 0;
-  letter-spacing: 1px;
-  border-radius: 24px;
-}
-.hotMaterial .mint-cell-wrapper{
-  margin-bottom: 15px;
-}
-/*最新推荐的菜谱*/
-.recoRecipe{
-
-}
-.recoRecipe_content a{
-  width: 50%;
-  margin-top: 10px;
-}
 </style>
