@@ -23,6 +23,13 @@
       <mt-swipe-item> <img src="../assets/banner-img/5.jpg"> </mt-swipe-item>
     </mt-swipe>
 
+    <!-- 菜单栏 -->
+    <div class="recipeSort_content yyMenu">
+      <mt-cell v-for="menu in menus" :title=menu.title>
+        <img slot="icon" :src=menu.src width="24" height="24">
+      </mt-cell>
+    </div>  
+
 
 
     <!-- 流行与排行 -->
@@ -101,7 +108,7 @@
       <!-- 主要内容 -->
       <div class="recipeSort_content recoRecipe_content">
         <mt-cell v-for="recommend in newRecipeReco" :title=recommend.title :label=recommend.label>
-          <img slot="icon" :src=recommend.src width="166" height="146">
+          <img slot="icon" :src=recommend.src width="100%" height="100%">
         </mt-cell>
       </div>      
     </div>  
@@ -126,6 +133,22 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App',
       menuSelected:'',
+      menus:[{
+        title:"专题",
+        src:"../static/image/menuImg/home_topic.png"
+      },{
+        title:"菜单",
+        src:"../static/image/menuImg/home_menu.png"
+      },{
+        title:"视频",
+        src:"../static/image/menuImg/home_video.png"
+      },{
+        title:"活动",
+        src:"../static/image/menuImg/home_event.png"
+      },{
+        title:"福利社",
+        src:"../static/image/menuImg/home_welfare.png"
+      }],
       popularMenu:[{
         title:"爱吃[土豆]的都是胖天使？",
         label:"菜单|快来看看土豆还有哪些吃法",
@@ -246,26 +269,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-*{
-  font-family: "微软雅黑";
-}
 
-body{
-  margin: 8px 0;
-}
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
 
 /*解决谷歌字体小于12px没效果*/
 /*.small-font{    
@@ -283,11 +287,6 @@ li {
   color:#fff;
 }
 
-/*改变底部tab被选中的状态*/
-.mint-tabbar > .mint-tab-item.is-selected {
-    background-color: transparent;
-    color: #FE5761;
-}
 
 /*修改轮播的高度*/
 .mint-swipe{
@@ -300,12 +299,19 @@ li {
 
 /*菜单栏*/
 .yyMenu{
-  display: block;
-  position: relative;
+  margin-bottom: 15px;
+}
+.yyMenu .mint-cell-wrapper,.yyMenu .mint-cell:last-child{
+  background-image: none !important;
 }
 .yyMenu a{
-  display: inline-block;
-  margin: 1% 5%;
+  width: 18% !important;
+  margin: 0 3px;
+}
+.yyMenu .mint-cell-text{
+  font-size: 12px !important;
+  display: block;
+  margin-top: 5px;
 }
 
 /*流行与排行*/

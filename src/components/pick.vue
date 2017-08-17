@@ -1,24 +1,15 @@
 <template>
 	<div class="topic">
 		<!-- 顶部固定导航 -->
-		<mt-header fixed title="话题">
+		<mt-header fixed title="珍选">
 		  <router-link to="/" slot="left">
 		    <mt-button icon="search"></mt-button>        
 		  </router-link>
 		  <router-link to="/" slot="center">
 		    <mt-button>菜单</mt-button>        
 		  </router-link>
-		  <mt-button icon="plus" slot="right">发话题</mt-button>
+		  <mt-button icon="plus" slot="right">发商品</mt-button>
 		</mt-header>
-
-		<!-- banner广告栏 -->
-		<mt-swipe :auto="4000">
-		  <mt-swipe-item> <img src="../assets/banner-img/1.jpg"> </mt-swipe-item>
-		  <mt-swipe-item> <img src="../assets/banner-img/2.jpg"> </mt-swipe-item>
-		  <mt-swipe-item> <img src="../assets/banner-img/3.jpg"> </mt-swipe-item>
-		  <mt-swipe-item> <img src="../assets/banner-img/4.jpg"> </mt-swipe-item>
-		  <mt-swipe-item> <img src="../assets/banner-img/5.jpg"> </mt-swipe-item>
-		</mt-swipe>
 
 		<!-- 菜单栏 -->
 		<div class="recipeSort_content TopicMenu">
@@ -67,15 +58,6 @@
 }
 .mint-header a{
   color:#fff;
-}
-
-/*修改轮播的高度*/
-.mint-swipe{
-  height:164px;
-}
-.mint-swipe img{
-  width: 100%;
-  height: 100%;
 }
 
 /*菜单栏*/

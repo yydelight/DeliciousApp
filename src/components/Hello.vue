@@ -13,20 +13,24 @@
 
     <!-- 固定在底部的选项卡 -->
     <mt-tabbar fixed>
-      <mt-tab-item id="菜谱" @click.native.prevent="selected='菜谱'">
-        <img slot="icon" src="../assets/menu-icon/tab_recipe_red.png">
+      <mt-tab-item id="菜谱" @click.native="showIcon(1)" @click.native.prevent="selected='菜谱'" :class="{ textRed: iconstate == 1 }">
+        <img slot="icon" src="../assets/menu-icon/tab_recipe_gray.png">
+        <img slot="icon" v-show="iconstate==1" class="hide_icon" src="../assets/menu-icon/tab_recipe_red.png">
         菜谱
       </mt-tab-item>
-      <mt-tab-item id="话题" @click.native.prevent="selected='话题'">
+      <mt-tab-item id="话题" @click.native="showIcon(2)" @click.native.prevent="selected='话题'" :class="{ textRed: iconstate == 2 }">
         <img slot="icon" src="../assets/menu-icon/tab_topic_gray.png">
+        <img slot="icon" v-show="iconstate==2" class="hide_icon" src="../assets/menu-icon/tab_topic_red.png">
         话题
       </mt-tab-item>
-      <mt-tab-item id="珍选" @click.native.prevent="selected='珍选'">
+      <mt-tab-item id="珍选" @click.native="showIcon(3)" @click.native.prevent="selected='珍选'" :class="{ textRed: iconstate == 3 }" >
         <img slot="icon" src="../assets/menu-icon/tab_select_grey.png">
+        <img slot="icon" v-show="iconstate==3" class="hide_icon" src="../assets/menu-icon/tab_select_red.png">
         珍选
       </mt-tab-item>
-      <mt-tab-item id="我的" @click.native.prevent="selected='我的'">
+      <mt-tab-item id="我的" @click.native="showIcon(4)" @click.native.prevent="selected='我的'" :class="{ textRed: iconstate == 4 }">
         <img slot="icon" src="../assets/menu-icon/tab_user_gray.png">
+        <img slot="icon" v-show="iconstate==4" class="hide_icon" src="../assets/menu-icon/tab_user_red.png">
         我的
       </mt-tab-item>
     </mt-tabbar>
@@ -40,10 +44,10 @@
         <topic></topic>
       </mt-tab-container-item>  
       <mt-tab-container-item id="珍选">  
-          
+        <pick></pick>  
       </mt-tab-container-item>  
       <mt-tab-container-item id="我的">  
-         
+         <mine></mine>
       </mt-tab-container-item>  
     </mt-tab-container>   
 
@@ -60,6 +64,8 @@ import Vue from 'vue'
 import { Tabbar, TabItem } from 'mint-ui'
 import topic from '../components/topic.vue'
 import recipe from '../components/recipe.vue'
+import pick from '../components/pick.vue'
+import mine from '../components/mine.vue'
 
 Vue.component(Tabbar.name, Tabbar)
 Vue.component(TabItem.name, TabItem)
@@ -68,13 +74,15 @@ export default {
   name: 'hello',
   components: {
     topic,
-    recipe
+    recipe,
+    pick,
+    mine
   },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
       selected: '菜谱',
-      id:'',
+      iconstate: 1,
       menuSelected:'',
       popularMenu:[{
         title:"爱吃[土豆]的都是胖天使？",
@@ -196,6 +204,12 @@ export default {
           // 这里就可以通过 val 的值变更来确定
           console.log(val)
       }
+  },
+  methods: {
+      // 点击改变按钮状态从而改变class
+      showIcon(index){
+        this.iconstate = index;
+      }
   }
 }
 </script>
@@ -241,8 +255,17 @@ li {
 
 /*改变底部tab被选中的状态*/
 .mint-tabbar > .mint-tab-item.is-selected {
-    background-color: transparent;
-    color: #FE5761;
+  background-color: transparent;
+  color: #FE5761;
+}
+.hide_icon{
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  top: 7px;
+}
+.textRed{
+  color: red;
 }
 
 </style>
