@@ -26,11 +26,11 @@
 		<!-- 我的菜单 -->
 		<div class="mineMenu">
 			<!-- 主要内容 -->
-<!-- 			<div class="recipeSort_content">
+			<div class="recipeSort_content">
 			  <mt-cell v-for="mms in mineMenus" :title=mms.title>
-			    <img slot="icon" :src=mms.src width="50" height="50">
+			    <img slot="icon" :src=mms.src width="20" height="20">
 			  </mt-cell>
-			</div>  -->
+			</div> 
 		</div>
 
 
@@ -46,7 +46,31 @@
 			return {
 				mineMenus:[{
 					title:"我的原创",
-					src:"../assets/menu-icon/mine_icon.png"
+					src:"../../static/image/menuImg/user_yuanchuang.png"
+				},{
+					title:"我的收藏",
+					src:"../../static/image/menuImg/user_collect.png"
+				},{
+					title:"我的草稿",
+					src:"../../static/image/menuImg/user_draft.png"
+				},{
+					title:"福利社",
+					src:"../../static/image/menuImg/user_lucky.png"
+				},{
+					title:"我的任务",
+					src:"../../static/image/menuImg/user_duty.png"
+				},{
+					title:"我的订单",
+					src:"../../static/image/menuImg/user_order.png"
+				},{
+					title:"账号管理",
+					src:"../../static/image/menuImg/user_collect.png"
+				},{
+					title:"消息中心",
+					src:"../../static/image/menuImg/user_msg.png"
+				},{
+					title:"帮助与反馈",
+					src:"../../static/image/menuImg/user_help.png"
 				}]
 
 			}
@@ -100,18 +124,35 @@
   font-size: 12px;
   color: #5e5e5c;
 }
+.loginButton{
+  margin-top: 15px;
+}
 .loginButton .mint-button{
-  width: 40%;
+  width: 45%;
   letter-spacing: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
 /*我的菜单*/
-.recipeSort_content{
+.mineMenu .recipeSort_content{
   margin-top: 2%;
 }
-.recipeSort_content a{
+.mineMenu .recipeSort_content a{
   display: inline-block;
-  width: 25%;
+  width: 33%;
   vertical-align: top;
+}
+.mineMenu .mint-cell-wrapper{
+  background-image: none;
+  border-right: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
+  padding: 16px 0px;
+}
+.mineMenu .mint-cell-text {
+    vertical-align: middle;
+    display: block;
+    font-size: 12px;
+    margin-top: 5px;
 }
 </style>

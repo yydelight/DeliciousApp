@@ -1,16 +1,5 @@
 <template>
   <div class="hello">
-    <!-- 顶部固定导航 -->
-<!--     <mt-header fixed title="首页">
-      <router-link to="/" slot="left">
-        <mt-button icon="search"></mt-button>        
-      </router-link>
-      <router-link to="/" slot="center">
-        <mt-button>菜单</mt-button>        
-      </router-link>
-      <mt-button icon="plus" slot="right">发菜谱</mt-button>
-    </mt-header> -->
-
     <!-- 固定在底部的选项卡 -->
     <mt-tabbar fixed>
       <mt-tab-item id="菜谱" @click.native="showIcon(1)" @click.native.prevent="selected='菜谱'" :class="{ textRed: iconstate == 1 }">
