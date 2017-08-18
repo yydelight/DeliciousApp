@@ -16,7 +16,9 @@
   "dependencies": {
     "element-ui": "^1.4.2",
     "mint-ui": "^2.2.9",
+    "reqwest": "^2.0.5",
     "vue": "^2.4.2",
+    "vue-awesome-swiper": "^2.6.2",
     "vue-router": "^2.6.0"
   },
   "devDependencies": {

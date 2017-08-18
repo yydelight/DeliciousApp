@@ -33,17 +33,52 @@
 			</div> 
 		</div>
 
+		<div>
+			<ol>
+			  <li v-for="news of list">
+			    <p class="title">{{ news.title }}</p>
+			    <p class="date">{{ news.create_at }}</p>
+			    <p class="author">By: {{ news.author.loginname }}</p>
+			  </li>
+			</ol>
+		</div>
+
+<!-- 		<div>
+			<ol>
+			  <li v-for="beauty of cool">
+			    <img width="20" :src="beauty.url">
+			    <p class="date">{{ beauty.desc }}</p>
+			    <p class="author">By: {{ beauty.publishedAt }}</p>
+			    <img :src="beauty.url">
+			  </li>
+			</ol>
+		</div> -->
+
+
+		
+
+
 
 	</div>
 </template>
 
 <script>
 	import Vue from 'vue'
+	import news from '../global/api'
+	import beauty from '../global/api'
 
 	export default {
-		name: 'topic',
+		name: 'mine',
+		props: {
+		  type: {
+		    type: String
+		  }
+		},
 		data () {
 			return {
+				list: [],
+				limit: 10,
+				cool:[],
 				mineMenus:[{
 					title:"我的原创",
 					src:"../../static/image/menuImg/user_yuanchuang.png"
@@ -74,8 +109,59 @@
 				}]
 
 			}
+		},
+		props: {
+		  page: {
+		    type: Number,
+		    default: 1
+		  }
+		},
+		created () {
+		  this.get()
+		},
+		watch: {
+		  page (val) {
+		    this.get()
+		  }
+		},
+		methods: {
+		  get () {
+		    news.getList({
+		      page: this.page,
+		      limit: this.limit
+		    }, (err, list) => {
+		      if (err) {
+		        console.log(err)
+		      } else {
+		        list.data.forEach((data) => {
+		          const d = new Date(data.create_at)
+		          data.create_at = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
+		          // console.log(data)
+		        })
+		        this.list = this.list.concat(list.data)
+		      }
+		    }),
+		    beauty.getBeauty({
+		    	page: this.page,
+		    	limit: this.limit
+		    }, (err, cool) => {
+		      if (err) {
+		        console.log(err)
+		      } else {
+		        cool.results.forEach((results) => {
+		          const d = new Date(results.createdAt)
+		          results.createdAt = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
+		          // console.log(results)
+		        })
+		        this.cool = this.cool.concat(cool.results)
+		        // console.log(this.cool)
+		      }
+		    })
+
+		  }
 		}
-	}
+	
+}
 
 </script>
 
@@ -154,5 +240,38 @@
     display: block;
     font-size: 12px;
     margin-top: 5px;
+}
+
+/*尝试*/
+ol {
+  margin-left: -3.3rem;
+  /*margin-left: 2rem;*/
+  /*list-style: outside decimal;*/
+}
+li {
+  line-height: 1.5;
+  padding: 1rem;
+  border-bottom: 1px solid #b6b6b6;
+}
+.title {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.date {
+  font-size: .8rem;
+  color: #d6d6d6;
+}
+
+/*懒加载*/
+.beautyApi{
+	width: 100%;
+}
+.beautyApi img{
+	width: 100%;
+	height: auto;
+}
+.beautyApi ul li{
+	width: 100%;
+	padding: 0;
 }
 </style>
