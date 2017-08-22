@@ -1,5 +1,5 @@
 <template>
-	<div class="topic">
+	<div class="mine">
 		<!-- 顶部固定导航 -->
 		<mt-header fixed title="我的">
 		  <mt-button slot="right" class="headerRight">
@@ -134,9 +134,8 @@
 		        console.log(err)
 		      } else {
 		        list.data.forEach((data) => {
-		          const d = new Date(data.create_at)
-		          data.create_at = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
-		          // console.log(data)
+		          // const d = new Date(data.create_at)
+		          // data.create_at = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
 		        })
 		        this.list = this.list.concat(list.data)
 		      }
@@ -151,10 +150,8 @@
 		        cool.results.forEach((results) => {
 		          const d = new Date(results.createdAt)
 		          results.createdAt = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
-		          // console.log(results)
 		        })
 		        this.cool = this.cool.concat(cool.results)
-		        // console.log(this.cool)
 		      }
 		    })
 
@@ -167,53 +164,54 @@
 
 <style>
 /*固定导航更换颜色*/
-.mint-header{
+.mine .mint-header{
   background-color: #FE5761;
 }
-.mint-header a{
+.mine .mint-header a{
   color:#fff;
 }
 
 /*固定导航的右边图标*/
-.headerRight .mint-button-text{
+.mine .headerRight .mint-button-text{
   font-size: 12px;
   margin-top: 15px;
   display: inline-block;
 }
-.headerRight .setIcon{
+.mine .headerRight .setIcon{
   position: absolute;
   top: 6px;
   right: 3px;
 }
 
 /*欢迎加入*/
-.Welcome{
+.mine .Welcome{
   background: rgba(223,223,223,0.3);
   padding: 10px;
+  margin-top: 60px;
 }
-.welcomeIcon{
+.mine .welcomeIcon{
   border-radius: 25px;
   float: left;
   width: 15%;
 }
-.eatFri{
+.mine .eatFri{
   text-align: left;
   padding-left: 65px;
 }
-.welJoin{
+.mine .welJoin{
   display: block;
   line-height: 31px;
   color: #111;
 }
-.allEat{
+.mine .allEat{
   display: block;
   font-size: 12px;
   color: #5e5e5c;
 }
-.loginButton{
+.mine .loginButton{
   margin-top: 15px;
 }
-.loginButton .mint-button{
+.mine .loginButton .mint-button{
   width: 45%;
   letter-spacing: 5px;
   margin-right: 5px;
@@ -221,21 +219,21 @@
 }
 
 /*我的菜单*/
-.mineMenu .recipeSort_content{
+.mine .mineMenu .recipeSort_content{
   margin-top: 2%;
 }
-.mineMenu .recipeSort_content a{
+.mine .mineMenu .recipeSort_content a{
   display: inline-block;
   width: 33%;
   vertical-align: top;
 }
-.mineMenu .mint-cell-wrapper{
+.mine .mineMenu .mint-cell-wrapper{
   background-image: none;
   border-right: 1px solid #efefef;
   border-bottom: 1px solid #efefef;
   padding: 16px 0px;
 }
-.mineMenu .mint-cell-text {
+.mine .mineMenu .mint-cell-text {
     vertical-align: middle;
     display: block;
     font-size: 12px;
@@ -243,35 +241,23 @@
 }
 
 /*尝试*/
-ol {
+.mine ol {
   margin-left: -3.3rem;
   /*margin-left: 2rem;*/
   /*list-style: outside decimal;*/
 }
-li {
+.mine li {
   line-height: 1.5;
   padding: 1rem;
   border-bottom: 1px solid #b6b6b6;
 }
-.title {
+.mine .title {
   font-weight: bold;
   font-size: 1.2rem;
 }
-.date {
+.mine .date {
   font-size: .8rem;
   color: #d6d6d6;
 }
 
-/*懒加载*/
-.beautyApi{
-	width: 100%;
-}
-.beautyApi img{
-	width: 100%;
-	height: auto;
-}
-.beautyApi ul li{
-	width: 100%;
-	padding: 0;
-}
 </style>

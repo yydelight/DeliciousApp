@@ -36,15 +36,23 @@
 			</ul>
 		</div>  
 
+		<!-- <vueWaterfallEasy>222</vueWaterfallEasy> -->
+
 	</div>
 </template>
 
 <script>
 	import Vue from 'vue'
 	import beauty from '../global/api'
+	// import Waterfall from '../../lib/waterfall'
+	// import WaterfallSlot from '../../lib/waterfall-slot'
+	// import vueWaterfallEasy from 'vue-waterfall-easy.vue'
 
 	export default {
 		name: 'topic',
+		// components:{
+		// 	vueWaterfallEasy
+		// },
 		data () {
 			return {
 				cool:[],
@@ -70,7 +78,7 @@
 		props: {
 		  page: {
 		    type: Number,
-		    default: 1
+		    default: 2
 		  }
 		},
 		created () {
@@ -107,37 +115,56 @@
 
 <style>
 /*固定导航更换颜色*/
-.mint-header{
+.topic .mint-header{
   background-color: #FE5761;
 }
-.mint-header a{
+.topic .mint-header a{
   color:#fff;
 }
 
 /*修改轮播的高度*/
-.mint-swipe{
+.topic .mint-swipe{
   height:164px;
+  margin-top: 52px;
 }
-.mint-swipe img{
+.topic .mint-swipe img{
   width: 100%;
   height: 100%;
 }
 
 /*菜单栏*/
-.TopicMenu{
+.topic .TopicMenu{
   margin-bottom: 15px;
 }
-.TopicMenu .mint-cell-wrapper,.TopicMenu .mint-cell:last-child{
+.topic .mint-cell-wrapper, .topic .mint-cell:last-child{
   background-image: none !important;
 }
-.TopicMenu a{
+.topic .TopicMenu a{
   width: 18% !important;
   margin: 0 3px;
 }
-.TopicMenu .mint-cell-text{
+.topic .TopicMenu .mint-cell-text{
   font-size: 12px !important;
   display: block;
   margin-top: 5px;
+}
+
+
+.topic .beautyApi ul{
+    -webkit-padding-start: 0px;
+}
+.topic .beautyApi ul li {
+    width: 40%;
+    padding: 5px;
+    list-style: none;
+    display: inline-block;
+}
+.topic .beautyApi{
+	width: 100%;
+}
+.topic .beautyApi img{
+	width: 100%;
+	height: auto;
 }
 
 </style>

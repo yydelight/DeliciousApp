@@ -277,6 +277,9 @@ export default {
   -webkit-transform-origin-x: 0;
   -webkit-transform: scale(0.90);
 }*/
+.recipe{
+  margin-top: 60px;
+}
 
 
 /*固定导航更换颜色*/

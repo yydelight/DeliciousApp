@@ -33,7 +33,7 @@
         <topic></topic>
       </mt-tab-container-item>  
       <mt-tab-container-item id="珍选">  
-        <pick></pick>  
+        <search></search>  
       </mt-tab-container-item>  
       <mt-tab-container-item id="我的">  
          <mine></mine>
@@ -55,6 +55,7 @@ import topic from '../components/topic.vue'
 import recipe from '../components/recipe.vue'
 import pick from '../components/pick.vue'
 import mine from '../components/mine.vue'
+import search from '../components/search.vue'
 
 Vue.component(Tabbar.name, Tabbar)
 Vue.component(TabItem.name, TabItem)
@@ -65,7 +66,8 @@ export default {
     topic,
     recipe,
     pick,
-    mine
+    mine,
+    search
   },
   data () {
     return {
@@ -204,13 +206,13 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
 *{
   font-family: "微软雅黑";
 }
 
 body{
-  margin: 8px 0;
+  /*margin: 8px 0;*/
 }
 h1, h2 {
   font-weight: normal;

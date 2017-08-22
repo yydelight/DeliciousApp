@@ -2,7 +2,7 @@
 	<div class="topic">
 		<!-- 顶部固定导航 -->
 		<mt-header fixed title="珍选">
-		  <router-link to="/" slot="left">
+		  <router-link to="/search" slot="left">
 		    <mt-button icon="search"></mt-button>        
 		  </router-link>
 		  <mt-button icon="plus" slot="right">发商品</mt-button>
@@ -13,6 +13,12 @@
 			<div v-html="his.content">				
 			</div>
 		</div>
+
+		<mt-search
+		  v-model="value"
+		  cancel-text="取消"
+		  placeholder="搜索" v-show="search==1">
+		</mt-search>
 
 	</div>
 </template>
@@ -34,7 +40,9 @@
 		data () {
 			return {
 				longhistory:[],
-				limit: 10,
+				limit: 20,
+				search:0,
+				value:"",
 				menus:[{
 				  title:"美食随手拍",
 				  src:"../static/image/menuImg/home_topic.png"
@@ -87,6 +95,9 @@
 		        this.longhistory = this.longhistory.concat(longhistory.results)
 		      }
 		    })
+			},
+			sss(){
+				this.search = 1;
 			}
 		}
 	}
