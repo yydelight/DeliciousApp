@@ -58,19 +58,19 @@
 				cool:[],
 				menus:[{
 				  title:"美食随手拍",
-				  src:"../static/image/menuImg/home_topic.png"
+				  src:require("../assets/menuImg/home_topic.png")
 				},{
 				  title:"厨艺交流",
-				  src:"../static/image/menuImg/home_menu.png"
+				  src:require("../assets/menuImg/home_menu.png")
 				},{
 				  title:"烘焙圈",
-				  src:"../static/image/menuImg/home_video.png"
+				  src:require("../assets/menuImg/home_video.png")
 				},{
 				  title:"妈妈派",
-				  src:"../static/image/menuImg/home_event.png"
+				  src:require("../assets/menuImg/home_event.png")
 				},{
 				  title:"全部小组",
-				  src:"../static/image/menuImg/home_welfare.png"
+				  src:require("../assets/menuImg/home_welfare.png")
 				}],
 
 			}

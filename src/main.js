@@ -8,9 +8,7 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import { Lazyload } from 'mint-ui';
-import VueResource from 'vue-resource';
 
-Vue.use(VueResource);
 Vue.use(MintUi)
 Vue.use(ElementUI)
 Vue.use(Lazyload);

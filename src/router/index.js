@@ -15,17 +15,6 @@ export default new Router({
       path:'/search',
       name:'search',
       component: Search
-    },
-    {
-       path: '/mine',
-       name: 'mine',
-       component(resolve) {
-       	  require.ensure(['./../components/slide.vue'], () => {
-       	    resolve(require('./../components/slide.vue'));
-       	  });
-       },
-       meta: { requiresAuth: true }
-
-    }   	   
+    }  	   
   ]
 })

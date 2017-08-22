@@ -135,132 +135,132 @@ export default {
       menuSelected:'',
       menus:[{
         title:"专题",
-        src:"../static/image/menuImg/home_topic.png"
+        src:require("../assets/menuImg/home_topic.png")
       },{
         title:"菜单",
-        src:"../static/image/menuImg/home_menu.png"
+        src:require("../assets/menuImg/home_menu.png")
       },{
         title:"视频",
-        src:"../static/image/menuImg/home_video.png"
+        src:require("../assets/menuImg/home_video.png")
       },{
         title:"活动",
-        src:"../static/image/menuImg/home_event.png"
+        src:require("../assets/menuImg/home_event.png")
       },{
         title:"福利社",
-        src:"../static/image/menuImg/home_welfare.png"
+        src:require("../assets/menuImg/home_welfare.png")
       }],
       popularMenu:[{
         title:"爱吃[土豆]的都是胖天使？",
         label:"菜单|快来看看土豆还有哪些吃法",
-        src:"../static/image/popularImg/pf1.jpg"
+        src:require("../assets/popularImg/pf1.jpg")
       },{
         title:"[鸭血]的美味做法大全~",
         label:"菜单|保证好吃到停不下来！",
-        src:"../static/image/popularImg/pf2.jpg"
+        src:require("../assets/popularImg/pf2.jpg")
       },{
         title:"深夜食堂的主角-小龙虾",
         label:"专题|除了吃，你还了解多少？",
-        src:"../static/image/popularImg/pf3.jpg"
+        src:require("../assets/popularImg/pf3.jpg")
       },{
         title:"盘点孕妇必吃的12种孕期事物",
         label:"知识|饮食与健康",
-        src:"../static/image/popularImg/pf4.jpg"
+        src:require("../assets/popularImg/pf4.jpg")
       },{
         title:"人气菜肴",
         label:"超过50人收藏的菜谱都超赞( • ̀ω•́ )✧",
-        src:"../static/image/popularImg/pf5.jpg"
+        src:require("../assets/popularImg/pf5.jpg")
       },{
         title:"一周热门",
         label:"近7天来最受欢迎的新菜谱，不容放过",
-        src:"../static/image/popularImg/pf6.jpg"
+        src:require("../assets/popularImg/pf6.jpg")
       }
       ],
       recipeSorts:[{
         title:"家常菜",
         label:"人人都是美食家",
-        src:"../static/image/recipeImg/rs1.jpg"
+        src:require("../assets/recipeImg/rs1.jpg")
       },{
         title:"早餐",
         label:"一日之计在于晨",
-        src:"../static/image/recipeImg/rs2.jpg"
+        src:require("../assets/recipeImg/rs2.jpg")
       },{
         title:"烘焙",
         label:"分类很全 方子超多",
-        src:"../static/image/recipeImg/rs3.jpg"
+        src:require("../assets/recipeImg/rs3.jpg")
       },{
         title:"妈妈派",
         label:"孕妇 辅食 亲子菜",
-        src:"../static/image/recipeImg/rs4.jpg"
+        src:require("../assets/recipeImg/rs4.jpg")
       }],
       materialSorts:[{
         title:"薏米",
-        src:"../static/image/materialImg/hm1.jpg"
+        src:require("../assets/materialImg/hm1.jpg")
       },{
         title:"木耳",
-        src:"../static/image/materialImg/hm2.jpg"
+        src:require("../assets/materialImg/hm2.jpg")
       },{
         title:"冬瓜",
-        src:"../static/image/materialImg/hm3.jpg"
+        src:require("../assets/materialImg/hm3.jpg")
       },{
         title:"玉米",
-        src:"../static/image/materialImg/hm4.jpg"
+        src:require("../assets/materialImg/hm4.jpg")
       },{
         title:"小龙虾",
-        src:"../static/image/materialImg/hm5.jpg"
+        src:require("../assets/materialImg/hm5.jpg")
       },{
         title:"鸡肉",
-        src:"../static/image/materialImg/hm6.jpg"
+        src:require("../assets/materialImg/hm6.jpg")
       },{
         title:"青口贝",
-        src:"../static/image/materialImg/hm7.jpg"
+        src:require("../assets/materialImg/hm7.jpg")
       },{
         title:"芋头",
-        src:"../static/image/materialImg/hm8.jpg"
+        src:require("../assets/materialImg/hm8.jpg")
       },{
         title:"红薯",
-        src:"../static/image/materialImg/hm9.jpg"
+        src:require("../assets/materialImg/hm9.jpg")
       },{
         title:"乌鸡",
-        src:"../static/image/materialImg/hm10.jpg"
+        src:require("../assets/materialImg/hm10.jpg")
       },{
         title:"培根",
-        src:"../static/image/materialImg/hm11.jpg"
+        src:require("../assets/materialImg/hm11.jpg")
       },{
         title:"全部食材",
-        src:"../static/image/materialImg/more.jpg"
+        src:require("../assets/materialImg/more.jpg")
       }],
       newRecipeReco:[{
         title:"虎皮辣椒炒肥牛",
         label:"天国的女儿",
-        src:"../static/image/recipeImg/nrr1.jpg"
+        src:require("../assets/recipeImg/nrr1.jpg")
       },{
         title:"挂糊花生米",
         label:"小玉厨房",
-        src:"../static/image/recipeImg/nrr2.jpg"
+        src:require("../assets/recipeImg/nrr2.jpg")
       },{
         title:"茄汁肉酱披萨盒",
         label:"小妞_hebycE",
-        src:"../static/image/recipeImg/nrr3.jpg"
+        src:require("../assets/recipeImg/nrr3.jpg")
       },{
         title:"茄汁牛肉酱拌面",
         label:"小妞_hebycE",
-        src:"../static/image/recipeImg/nrr4.jpg"
+        src:require("../assets/recipeImg/nrr4.jpg")
       },{
         title:"红烧猪骨",
         label:"碗里姜膳",
-        src:"../static/image/recipeImg/nrr5.jpg"
+        src:require("../assets/recipeImg/nrr5.jpg")
       },{
         title:"香煎杏鲍菇",
         label:"一米阳光612",
-        src:"../static/image/recipeImg/nrr6.jpg"
+        src:require("../assets/recipeImg/nrr6.jpg")
       },{
         title:"干锅茶树菇",
         label:"食趣菜菜屋的屋",
-        src:"../static/image/recipeImg/nrr7.jpg"
+        src:require("../assets/recipeImg/nrr7.jpg")
       },{
         title:"美味鲜虾肠粉",
         label:"雪峰儿",
-        src:"../static/image/recipeImg/nrr8.jpg"
+        src:require("../assets/recipeImg/nrr8.jpg")
       }]
     }
   }

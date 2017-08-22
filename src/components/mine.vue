@@ -81,31 +81,32 @@
 				cool:[],
 				mineMenus:[{
 					title:"我的原创",
-					src:"../../static/image/menuImg/user_yuanchuang.png"
+					// src:"../../static/image/menuImg/user_yuanchuang.png"
+					src:require("../assets/menuImg/user_yuanchuang.png")
 				},{
 					title:"我的收藏",
-					src:"../../static/image/menuImg/user_collect.png"
+					src:require("../assets/menuImg/user_collect.png")
 				},{
 					title:"我的草稿",
-					src:"../../static/image/menuImg/user_draft.png"
+					src:require("../assets/menuImg/user_draft.png")
 				},{
 					title:"福利社",
-					src:"../../static/image/menuImg/user_lucky.png"
+					src:require("../assets/menuImg/user_lucky.png")
 				},{
 					title:"我的任务",
-					src:"../../static/image/menuImg/user_duty.png"
+					src:require("../assets/menuImg/user_duty.png")
 				},{
 					title:"我的订单",
-					src:"../../static/image/menuImg/user_order.png"
+					src:require("../assets/menuImg/user_order.png")
 				},{
 					title:"账号管理",
-					src:"../../static/image/menuImg/user_collect.png"
+					src:require("../assets/menuImg/user_collect.png")
 				},{
 					title:"消息中心",
-					src:"../../static/image/menuImg/user_msg.png"
+					src:require("../assets/menuImg/user_msg.png")
 				},{
 					title:"帮助与反馈",
-					src:"../../static/image/menuImg/user_help.png"
+					src:require("../assets/menuImg/user_help.png")
 				}]
 
 			}
