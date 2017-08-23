@@ -8,11 +8,13 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import { Lazyload } from 'mint-ui';
+import vueResource from 'vue-resource'
 
 Vue.use(MintUi)
 Vue.use(ElementUI)
 Vue.use(Lazyload);
 Vue.config.productionTip = false
+Vue.use(vueResource)
 
 /* eslint-disable no-new */
 new Vue({

@@ -5,6 +5,8 @@ import Search from '@/components/search'
 
 Vue.use(Router)
 
+const Book = resolve => require(['@/components/Book'], resolve)
+
 export default new Router({
   routes: [
     {
@@ -15,6 +17,10 @@ export default new Router({
       path:'/search',
       name:'search',
       component: Search
+    }, {
+      path: '/book/:bookId',
+      name: 'book',
+      component: Book
     }  	   
   ]
 })

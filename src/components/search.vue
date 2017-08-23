@@ -11,8 +11,8 @@
 		</div>
 
 		<!-- 搜索热词 -->
-		<div class="searchHot">
-			<span v-for=" hw in hot ">
+		<div class="searchHot" v-show='this.songs.length==0'>
+			<span v-for=" hw in hot " @click="search1(hw.word)">
 				<mt-badge size="small" type="error"> {{ hw.word }} </mt-badge>
 			</span>
 			
@@ -22,7 +22,7 @@
 		<!-- 搜索结果列表 -->
 		<div class="search-list">
 			<ul class="search-list-warp">
-				<li class="search-list-li" v-for="  sing  in songs" >
+				<li class="search-list-li" v-for="  sing  in songs" @click="lookStory(sing._id)" :key="sing._id">
 					<img :src="sing.cover">
 					<div class="search-text">
 						<p class="title">  {{ sing.title }} </p>
@@ -45,6 +45,7 @@
 	import searchApi from '../global/api'
 	import third from '../global/api'
 	import Vue from 'vue'
+	import vueResource from 'Vue-resource'
 	import reqwest from 'reqwest'
 
 	import { Badge } from 'mint-ui';
@@ -61,27 +62,46 @@
 				staticPath: 'http://statics.zhuishushenqi.com'  //图片固定的开头地址
 			}
 		},
+		props: ['book'],
 		created () {
 		  this.gethw()
 		},
 		methods: {
 			  search1 (want) {
+			  	if(!this.input2){
+			  		this.input2 = want;
+			  	}
 			  	this.songs=[];
 			  	let loading = Vue.prototype.$loading({text:"玩命加载中..."}); //触发加载提示页面
-			    third.searchSong({
-			    	query:want
-			    }, (err, song) => {
-			      if (err) {
-			        console.log(err)
-			      } else {
-			      	song.books.forEach((data) => {
-			      		 data.cover = this.staticPath + data.cover;  //更改图片地址
-			      		 data.latelyFollower =( data.latelyFollower/10000).toFixed(1); //取小数点后一位
-			      	})
-			      	this.songs = this.songs.concat(song.books) //拼接数组，把数据对象传给数组
-			      	loading.close();   //加载结束，关闭加载提示页面
-			      }
-			    })
+
+			  	// 调用api.js方法
+			    // third.searchSong({
+			    // 	query:want
+			    // }, (err, song) => {
+			    //   if (err) {
+			    //     console.log(err)
+			    //   } else {
+			    //   	console.log(song)
+			    //   	song.books.forEach((data) => {
+			    //   		 data.cover = this.staticPath + data.cover;  //更改图片地址
+			    //   		 data.latelyFollower =( data.latelyFollower/10000).toFixed(1); //取小数点后一位
+			    //   	})
+			    //   	this.songs = this.songs.concat(song.books) //拼接数组，把数据对象传给数组
+			    //   	loading.close();   //加载结束，关闭加载提示页面
+			    //   }
+			    // })
+
+				let link = 'http://35.189.165.140:3000/book/fuzzy-search?query= ' + want;
+				Vue.http.get(link).then((response) => {
+					var song = response.data;
+				  	song.books.forEach((data) => {
+				  		 data.cover = this.staticPath + data.cover;  //更改图片地址
+				  		 data.latelyFollower =( data.latelyFollower/10000).toFixed(1); //取小数点后一位
+				  	})
+				  	this.songs = this.songs.concat(song.books) //拼接数组，把数据对象传给数组
+				  	loading.close();   //加载结束，关闭加载提示页面				  
+				});
+
 			  },
 			  gethw(){
 			  	  this.hot=[];
@@ -89,16 +109,15 @@
 				      url: 'http://35.189.165.140:3000/book/search-hotwords'
 				  }, (hotword) => {
 			      	hotword.searchHotWords.forEach((data) => {
-			      		console.log(data)
+			      		// console.log(data)
 			      	})
 			      	this.hot = this.hot.concat(hotword.searchHotWords) //拼接数组，把数据对象传给数组
 			      	this.hot.length = 15;
 			      
 			    })
-
-
-				
-
+			  },
+			  lookStory(id){
+			  	this.$router.push('/book/' + id)
 			  }
 		}
 	}
