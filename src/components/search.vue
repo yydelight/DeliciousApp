@@ -94,6 +94,7 @@
 				let link = 'http://35.189.165.140:3000/book/fuzzy-search?query= ' + want;
 				Vue.http.get(link).then((response) => {
 					var song = response.data;
+					console.log(song)
 				  	song.books.forEach((data) => {
 				  		 data.cover = this.staticPath + data.cover;  //更改图片地址
 				  		 data.latelyFollower =( data.latelyFollower/10000).toFixed(1); //取小数点后一位
@@ -164,7 +165,7 @@
 		width: 100%;
 		box-sizing:border-box; 
 		font-size: 14px;
-		padding-left: 34%;
+		padding-left: 27%;
 		text-align: left;
 	}
 	.searchDiv .search-list img{

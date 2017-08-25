@@ -154,7 +154,7 @@
     -webkit-padding-start: 0px;
 }
 .topic .beautyApi ul li {
-    width: 40%;
+    width: 45%;
     padding: 5px;
     list-style: none;
     display: inline-block;
@@ -165,6 +165,7 @@
 .topic .beautyApi img{
 	width: 100%;
 	height: auto;
+	vertical-align: top;
 }
 
 </style>
