@@ -143,10 +143,7 @@ a{
 }
 .day{
   padding: 50px 10px 20px 10px;
-}
-p{
-	font-size: 0;
-}   
+}  
 h1{
 	text-align: left;
 	font-weight: 700;
@@ -157,7 +154,6 @@ h1{
 	word-wrap: break-word;
 	white-space: normal !important;
 }
-
 h3{
 	color: #000000;
 	text-align: left;
